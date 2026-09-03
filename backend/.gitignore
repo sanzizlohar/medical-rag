@@ -1,0 +1,8 @@
+.env
+chroma_db/
+faiss_indexes/
+uploads/
+__pycache__/
+*.pyc
+server.log
+_last_doc_id.txt
