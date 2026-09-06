@@ -1,5 +1,9 @@
 # 🩺 MedDoc Q&A — Medical Document RAG System
 
+> **🚀 Live demo:** *coming soon — deploying now.* &nbsp;|&nbsp; **Backend API:** *coming soon*
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sanzizlohar/medical-rag)
+
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React%2018-61DAFB?logo=react&logoColor=black)
@@ -93,6 +97,24 @@ npm run dev
 ```
 
 Open http://localhost:5173 — the Vite dev server proxies `/api` to the backend.
+
+## ☁️ Deploy your own (free)
+
+| Piece | Host | Cost |
+|---|---|---|
+| Frontend (React) | Cloudflare Pages | free |
+| Backend (FastAPI) | Render free tier | free |
+
+**Backend:** click the **Deploy to Render** button above (uses the included
+`render.yaml` blueprint). You'll paste your `GOOGLE_API_KEY`, and set
+`CORS_ORIGINS` to your frontend URL after the frontend is deployed.
+⚠️ Free tier: sleeps after 15 min idle (~50 s cold start) and has an ephemeral
+disk — re-upload PDFs after a redeploy.
+
+**Frontend:** Cloudflare dashboard → Workers & Pages → Create → Pages → connect
+this repo → root directory `frontend`, framework preset **Vite**, build command
+`npm run build`, output `dist`, and environment variable
+`VITE_API_URL=https://<your-render-service>.onrender.com/api`.
 
 ## Running the project
 

@@ -1,0 +1,23 @@
+# Render Blueprint — deploys the MedDoc Q&A backend as a free web service.
+# Deploy via https://render.com/deploy?repo=https://github.com/sanzizlohar/medical-rag
+# Render will ask for the two sync:false values (your Gemini API key and the
+# deployed frontend origin, added to CORS).
+
+services:
+  - type: web
+    name: meddoc-qa-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.6-flash
+      - key: EMBEDDING_MODEL
+        value: models/gemini-embedding-001
+      - key: CORS_ORIGINS
+        sync: false
